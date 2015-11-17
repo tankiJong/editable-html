@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>cms demo</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <section>
+        <title>
+          title 1
+        </title>
+        <ul class="component-list">
+          <li type="Title">title</li>
+        </ul>
+      </section>
+      <section>
+        <title>
+          title 2
+        </title>
+        <ul class="component-list">
+          <li type="Content">text with pic</li>
+        </ul>
+      </section>
+    </div>
+    <div class="right">
+      <div class="main sortable-list">
+        <div sortable="" style="height:80px;width:100%;text-align: center;padding-top: 40px;background-color: #eaeaea;border: 1px #ccc;" class="placeholder over" draggable="true">drop a element here to start edit</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="js/toolBar.js"></script>
+<script type="text/javascript" src="js/sortable.js"></script>
+<script type="text/javascript" src="js/vender.js"></script>
+<script type="text/javascript" src="init.js"></script>
+<script type="text/javascript">
+  sortable('.sortable-list');
+</script>
+</html>
