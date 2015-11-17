@@ -1,7 +1,7 @@
 enum State{editable,uneditable};
 
 abstract class Component {
-	public node:Node;
+	public node:any;
 	public abstract render():Node;
 }
 

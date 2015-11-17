@@ -13,7 +13,6 @@ Node.prototype.insertAfter = function insertAfter(newEl) {
 	}
 };
 
-
 class Generator extends Component {
 	constructor(node) {
 		super();
@@ -112,10 +111,10 @@ class Generator extends Component {
 					node.addEventListener('dragleave', domdrugleave, false);
 					node.addEventListener('drop', domdrop, false);
 					node.addEventListener('dragend', domdrapend, false);
-					addToolBar(dragEl.firstChild);
-					releaseEl.insertAfter(dragEl);
-					dragEl = null;
-					releaseEl = null;
+					this.addToolBar(self.dragEl.firstChild);
+					self.releaseEl.insertAfter(self.dragEl);
+					self.dragEl = null;
+					self.releaseEl = null;
 					var placeholder = document.querySelector('.placeholder');
 					if (placeholder != null) {
 						placeholder.parentNode.removeChild(placeholder);
@@ -125,9 +124,9 @@ class Generator extends Component {
 			}
 		}
 		function domdrapend(e) {
-			[].forEach.call(_, function(column) {
-				column.classList.remove('over');
-				column.style.opacity = '1';
+			[].forEach.call(self.components, function(column:Component) {
+				column.node.classList.remove('over');
+				column.node.style.opacity = '1';
 			});
 		}
 	}
@@ -140,7 +139,7 @@ class Generator extends Component {
 	var del = tool.getElementsByClassName('delete')[0];
 	
 	del.addEventListener('click',function(e){
-		e.target.parentNode.parentNode.parentNode.removeChild(e.target.parentNode.parentNode);
+		(<Node>(e.target)).parentNode.parentNode.parentNode.removeChild((<Node>(e.target)).parentNode.parentNode);
 	},false);
 	
 	node.appendChild(tool);

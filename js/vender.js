@@ -37,12 +37,6 @@ var EditableComponent = (function (_super) {
     };
     return EditableComponent;
 })(Component);
-var test = (function () {
-    function test() {
-    }
-    test.xx = 3;
-    return test;
-})();
 var Template = (function () {
     function Template(src) {
         var xmlHttp = new XMLHttpRequest();
@@ -171,10 +165,10 @@ var Generator = (function (_super) {
                     node.addEventListener('dragleave', domdrugleave, false);
                     node.addEventListener('drop', domdrop, false);
                     node.addEventListener('dragend', domdrapend, false);
-                    addToolBar(dragEl.firstChild);
-                    releaseEl.insertAfter(dragEl);
-                    dragEl = null;
-                    releaseEl = null;
+                    this.addToolBar(self.dragEl.firstChild);
+                    self.releaseEl.insertAfter(self.dragEl);
+                    self.dragEl = null;
+                    self.releaseEl = null;
                     var placeholder = document.querySelector('.placeholder');
                     if (placeholder != null) {
                         placeholder.parentNode.removeChild(placeholder);
@@ -184,9 +178,9 @@ var Generator = (function (_super) {
             }
         }
         function domdrapend(e) {
-            [].forEach.call(_, function (column) {
-                column.classList.remove('over');
-                column.style.opacity = '1';
+            [].forEach.call(self.components, function (column) {
+                column.node.classList.remove('over');
+                column.node.style.opacity = '1';
             });
         }
     };
@@ -196,7 +190,7 @@ var Generator = (function (_super) {
         tool.innerHTML = '<a class="delete" href="#" style="position: absolute;width: 95%;text-align: right;">delete</a>';
         var del = tool.getElementsByClassName('delete')[0];
         del.addEventListener('click', function (e) {
-            e.target.parentNode.parentNode.parentNode.removeChild(e.target.parentNode.parentNode);
+            (e.target).parentNode.parentNode.parentNode.removeChild((e.target).parentNode.parentNode);
         }, false);
         node.appendChild(tool);
     };
