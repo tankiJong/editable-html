@@ -103,7 +103,7 @@ class Generator extends Component {
 				}
 
 				if (self.dragEl != this && self.releaseEl != null) {
-					var node = self.dragEl.children[0];
+					var node = self.dragEl;
 					node.setAttribute('draggable', 'true');
 					node.addEventListener("dragstart", domdrugstart, false);
 					node.addEventListener('dragenter', domdrugenter, false);
@@ -111,7 +111,7 @@ class Generator extends Component {
 					node.addEventListener('dragleave', domdrugleave, false);
 					node.addEventListener('drop', domdrop, false);
 					node.addEventListener('dragend', domdrapend, false);
-					this.addToolBar(self.dragEl.firstChild);
+					this.addToolBar(self.dragEl);
 					self.releaseEl.insertAfter(self.dragEl);
 					self.dragEl = null;
 					self.releaseEl = null;

@@ -59,7 +59,7 @@ var sortable= function(selector){
       }
       
       if (dragEl != this && releaseEl!=null) {
-        var node = dragEl.children[0];
+        var node = dragEl;
         node.setAttribute('draggable','true');
         node.addEventListener("dragstart",domdrugstart,false);
         node.addEventListener('dragenter', domdrugenter, false);
@@ -67,7 +67,7 @@ var sortable= function(selector){
         node.addEventListener('dragleave', domdrugleave, false);
         node.addEventListener('drop', domdrop, false);
         node.addEventListener('dragend', domdrapend, false);
-        addToolBar(dragEl.firstChild);  
+        addToolBar(dragEl);  
         releaseEl.insertAfter(dragEl);
         dragEl = null;
         releaseEl = null;
